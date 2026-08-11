@@ -1,6 +1,30 @@
-# React + Vite
+# Project 10:
+
+## Description
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+## Tech Stack
+
+-HTML
+-CSS
+-jsx
+-react
+-Responsive design
+-Figma
+
+## Deployment
+
+This webpage is deployed to Github Pages
+
+## -Deployment Link: https://jrives37.github.io/se_project_spots
+
+## Project pitch
+
+Check out https://drive.google.com/file/d/1EuDG6WOAm7D-gq81zPd8qo4uB6nXBmqc/view?usp=drive_link, where I describe my
+project and some challenges I faced while building it.
+
+# React + Vite
 
 Currently, two official plugins are available:
 
