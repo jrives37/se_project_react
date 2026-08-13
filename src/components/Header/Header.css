@@ -21,6 +21,8 @@
   font-family: "CabinetGrotesk-bold", sans-serif;
   font-size: 20px;
   font-weight: 700;
+  cursor: pointer;
+  border: none;
 }
 
 .header__user-container {

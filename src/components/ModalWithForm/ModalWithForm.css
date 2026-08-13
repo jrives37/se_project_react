@@ -100,4 +100,28 @@
 
 .modal__label.modal__label_type_radio {
   margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__content {
+  background-color: #fff;
+}
+
+.garment__add {
+  width: 124px;
+  height: 36px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "CabinetGrotesk", sans-serif;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #0000004d;
+  color: #fff;
+  border: none;
+  line-height: 20px;
+  white-space: nowrap;
+  text-align: center;
 }
