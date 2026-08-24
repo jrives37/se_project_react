@@ -8,12 +8,7 @@
   justify-content: center;
 }
 
-.cards__text {
-  font-family: "CabinetGrotesk-bold", sans-serif;
-  font-size: 20px;
-  margin: 34px 0 34px;
-  font-weight: 700;
-}
+
 
 .card__name {
   position: absolute;

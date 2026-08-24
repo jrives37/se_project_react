@@ -4,7 +4,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
@@ -28,14 +28,6 @@ export function addItem({ name, imageUrl, weather }) {
 export const removeItem = (_id) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
-  });
+    headers,
+  }).then(handleServerResponse);
 };
