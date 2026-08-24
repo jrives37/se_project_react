@@ -1,7 +1,15 @@
 import "./ModalWithForm.css";
 import closex from "../../assets/closex.png";
 
-function ModalWithForm({ children, buttonText, title, name, isOpen, onClose }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  name,
+  isOpen,
+  onClose,
+  onSubmit,
+}) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""} modal_type_${name}`}>
       <div className="modal__content-add">
@@ -11,7 +19,7 @@ function ModalWithForm({ children, buttonText, title, name, isOpen, onClose }) {
 
         <h2 className="modal__title">{title}</h2>
 
-        <form name={name}>
+        <form name={name} onSubmit={onSubmit}>
           {children}
 
           <button className="garment__add" type="submit">
