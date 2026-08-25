@@ -32,7 +32,7 @@
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
+  margin: 0 20px 0 20px;
   font-family: "CabinetGrotesk-bold", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -57,4 +57,10 @@
 .header__nav-link {
   color: black;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  margin-left: auto;
 }

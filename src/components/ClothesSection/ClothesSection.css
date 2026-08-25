@@ -2,13 +2,34 @@
   flex-grow: 1;
 }
 
-.clothes-section__row {
-  display: flex;
-}
-
 .clothes-section__items {
   display: grid;
-  grid-template-columns: repeat(3, 283px);
+  grid-template-columns: repeat(3, 323px);
   gap: 20px;
   padding: 0;
+}
+.clothes-section__row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.youritems {
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.button-add {
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #00000099;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: none;
+  background: none;
 }
