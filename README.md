@@ -13,9 +13,13 @@ This template provides a minimal setup to get React working in Vite with HMR and
 -Responsive design
 -Figma
 
-## Deployment
+## Database
 
-This webpage is deployed to Github Pages
+The application uses MongoDB with Mongoose.
+
+The default local database is:
+
+mongodb://127.0.0.1:27017/wtwr_db
 
 ## -Deployment Link: https://jrives37.github.io/se_project_spots
 
