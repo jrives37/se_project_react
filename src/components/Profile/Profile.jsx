@@ -11,6 +11,8 @@ export default function Profile({
   handleCardClick,
   handleAddClick,
   setCurrentUser,
+  handleCardLike,
+  handleLogout,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
@@ -19,11 +21,10 @@ export default function Profile({
   };
   return (
     <section className="profile">
-      <SideBar />
-
-      <button type="button" onClick={handleEditProfileClick}>
-        Edit Profile
-      </button>
+      <SideBar
+        handleEditProfileClick={handleEditProfileClick}
+        handleLogout={handleLogout}
+      />
 
       <ClothesSection
         clothingItems={clothingItems.filter(
@@ -31,6 +32,7 @@ export default function Profile({
         )}
         onCardClick={handleCardClick}
         onAddClick={handleAddClick}
+        onCardLike={handleCardLike}
       />
       <EditProfileModal
         isOpen={isEditProfileOpen}

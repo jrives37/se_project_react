@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, handleLogin }) {
+function LoginModal({ isOpen, onClose, handleLogin, handleRegisterClick }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,20 +19,30 @@ function LoginModal({ isOpen, onClose, handleLogin }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      secondaryButtonText="Sign up"
+      onSecondaryButtonClick={handleRegisterClick}
     >
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <label className="modal__label">
+        Email*
+        <input
+          className="modal__input"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <label className="modal__label">
+        Password*
+        <input
+          className="modal__input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
     </ModalWithForm>
   );
 }

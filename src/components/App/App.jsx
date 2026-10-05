@@ -89,7 +89,8 @@ function App() {
   };
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((id) => id === currentUser._id);
-
+    console.log("CARD AFTER CLICK:", card);
+    console.log("IS LIKED:", isLiked);
     if (isLiked) {
       removeCardLike(card._id)
         .then((updatedCard) => {
@@ -233,6 +234,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       setCurrentUser={setCurrentUser}
+                      handleCardLike={handleCardLike}
+                      handleLogout={handleLogout}
                     />
                   ) : (
                     <Navigate to="/" replace />
@@ -250,11 +253,13 @@ function App() {
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
               handleRegister={handleRegister}
+              handleLoginClick={handleLoginClick}
             />
             <LoginModal
               isOpen={activeModal === "login"}
               onClose={closeActiveModal}
               handleLogin={handleLogin}
+              handleRegisterClick={handleRegisterClick}
             />
 
             {activeModal === "preview" && (

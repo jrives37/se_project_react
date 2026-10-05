@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import likedIcon from "../../assets/liked.png";
+import defaultIcon from "../../assets/default.png";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
@@ -15,9 +17,13 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         <button
           type="button"
           onClick={() => onCardLike(item)}
-          className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
+          className="card__like-button"
         >
-          ♥
+          <img
+            className="card__like-icon"
+            src={isLiked ? likedIcon : defaultIcon}
+            alt={isLiked ? "Unlike item" : "Like item"}
+          />
         </button>
       )}
       <h2 className="card__name">{item.name}</h2>

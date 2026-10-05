@@ -24,13 +24,14 @@
 }
 
 .modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 16px;
   font-family: "CabinetGrotesk", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  display: flex;
-  flex-direction: column;
-  margin: 12px 0 12px 0;
 }
 
 .modal__content-add {
@@ -50,11 +51,15 @@
 }
 
 .modal__input {
-  display: block;
+  width: 100%;
+  box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #000;
   outline: none;
-  width: 100%;
+  padding: 4px 0;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__radio-buttons {
@@ -122,4 +127,36 @@
   line-height: 20px;
   white-space: nowrap;
   text-align: center;
+}
+.modal_type_register .modal__content-add {
+  max-width: 496px;
+  min-height: 456px;
+  height: auto;
+  border-radius: 16px;
+}
+.modal__secondary-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.modal__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modal_type_login .modal__content-add {
+  height: auto;
+  min-height: 304px;
+  border-radius: 16px;
+}
+.modal_type_register .modal__content-add {
+  height: auto;
+  min-height: 456px;
+  border-radius: 16px;
 }

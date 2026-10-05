@@ -9,6 +9,8 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  secondaryButtonText,
+  onSecondaryButtonClick,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""} modal_type_${name}`}>
@@ -19,12 +21,24 @@ function ModalWithForm({
 
         <h2 className="modal__title">{title}</h2>
 
-        <form name={name} onSubmit={onSubmit}>
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
 
-          <button className="garment__add" type="submit">
-            {buttonText}
-          </button>
+          <div className="modal__buttons">
+            <button className="garment__add" type="submit">
+              {buttonText}
+            </button>
+
+            {secondaryButtonText && (
+              <button
+                className="modal__secondary-button"
+                type="button"
+                onClick={onSecondaryButtonClick}
+              >
+                or {secondaryButtonText}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>

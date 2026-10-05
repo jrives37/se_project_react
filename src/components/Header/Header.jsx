@@ -11,7 +11,7 @@ function Header({
   weatherData,
   handleLoginClick,
   handleRegisterClick,
-  handleLogout,
+
   loggedIn,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -28,7 +28,25 @@ function Header({
         </p>
       </NavLink>
 
-      <ToggleSwitch />
+      <div className="header__actions">
+        <ToggleSwitch />
+
+        {!loggedIn && (
+          <>
+            <button
+              className="sign"
+              type="button"
+              onClick={handleRegisterClick}
+            >
+              Sign Up
+            </button>
+            <button className="log" type="button" onClick={handleLoginClick}>
+              Log In
+            </button>
+          </>
+        )}
+      </div>
+
       {loggedIn && (
         <button
           onClick={handleAddClick}
@@ -37,17 +55,6 @@ function Header({
         >
           +Add Clothes
         </button>
-      )}
-      {!loggedIn && (
-        <>
-          <button type="button" onClick={handleLoginClick}>
-            Log in
-          </button>
-
-          <button type="button" onClick={handleRegisterClick}>
-            Sign up
-          </button>
-        </>
       )}
       {loggedIn && (
         <NavLink className="header__nav-link" to="/profile">
@@ -67,12 +74,6 @@ function Header({
             )}
           </div>
         </NavLink>
-      )}
-
-      {loggedIn && (
-        <button type="button" onClick={handleLogout}>
-          Log out
-        </button>
       )}
     </header>
   );

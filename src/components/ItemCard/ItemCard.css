@@ -24,3 +24,20 @@
   border-radius: 19px;
   cursor: pointer;
 }
+
+.card__like-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.card__like-icon {
+  width: 20px;
+  height: 18px;
+  display: block;
+}
