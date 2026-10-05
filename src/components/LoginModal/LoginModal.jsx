@@ -1,20 +1,25 @@
 import React, { useState } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function LoginModal({ isOpen, onClose, handleLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     handleLogin(email, password);
   };
-  if (!isOpen) {
-    return null;
-  }
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Log in</h2>
 
+  return (
+    <ModalWithForm
+      title="Log in"
+      buttonText="Log in"
+      name="login"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
       <input
         type="email"
         placeholder="Email"
@@ -28,13 +33,7 @@ function LoginModal({ isOpen, onClose, handleLogin }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
-      <button type="submit">Log in</button>
-
-      <button type="button" onClick={onClose}>
-        Close
-      </button>
-    </form>
+    </ModalWithForm>
   );
 }
 

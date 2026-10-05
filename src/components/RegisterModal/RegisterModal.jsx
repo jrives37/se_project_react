@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal({ isOpen, onClose, handleRegister }) {
   const [name, setName] = useState("");
@@ -12,14 +13,15 @@ function RegisterModal({ isOpen, onClose, handleRegister }) {
     handleRegister(name, avatar, email, password);
   };
 
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-
+    <ModalWithForm
+      title="Register"
+      buttonText="Register"
+      name="register"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder="Name"
@@ -47,13 +49,7 @@ function RegisterModal({ isOpen, onClose, handleRegister }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
-      <button type="submit">Register</button>
-
-      <button type="button" onClick={onClose}>
-        Close
-      </button>
-    </form>
+    </ModalWithForm>
   );
 }
 

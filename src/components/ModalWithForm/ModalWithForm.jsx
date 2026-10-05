@@ -13,7 +13,7 @@ function ModalWithForm({
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""} modal_type_${name}`}>
       <div className="modal__content-add">
-        <button className="modal__close" onClick={onClose}>
+        <button type="button" className="modal__close" onClick={onClose}>
           <img className="closex" src={closex} alt="close icon" />
         </button>
 
