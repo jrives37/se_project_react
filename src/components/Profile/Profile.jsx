@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
 import ClothesSection from "../ClothesSection/ClothesSection";
@@ -11,6 +12,7 @@ export default function Profile({
   handleAddClick,
   setCurrentUser,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const handleEditProfileClick = () => {
     setIsEditProfileOpen(true);
@@ -24,7 +26,9 @@ export default function Profile({
       </button>
 
       <ClothesSection
-        clothingItems={clothingItems}
+        clothingItems={clothingItems.filter(
+          (item) => item.owner === currentUser._id,
+        )}
         onCardClick={handleCardClick}
         onAddClick={handleAddClick}
       />

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { login } from "../../utils/Api";
 
 function LoginModal({ isOpen, onClose, handleLogin }) {
   const [email, setEmail] = useState("");

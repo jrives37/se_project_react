@@ -21,6 +21,8 @@ The default local database is:
 
 mongodb://127.0.0.1:27017/wtwr_db
 
+## Backend Repository: https://github.com/jrives37/se_project_express.git
+
 ## -Deployment Link: https://jrives37.github.io/se_project_spots
 
 ## Project pitch

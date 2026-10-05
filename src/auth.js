@@ -1,16 +1,14 @@
 export function register(name, avatar, email, password) {
-  return fetch("http://localhost:3001/signup", {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify({
       name,
       avatar,
       email,
       password,
     }),
-  });
+  }).then(handleServerResponse);
 }
 export function login(email, password) {
   return fetch("http://localhost:3001/signin", {

@@ -50,20 +50,30 @@ function Header({
         </>
       )}
       {loggedIn && (
+        <NavLink className="header__nav-link" to="/profile">
+          <div className="header__user-container">
+            <p className="header__username">{currentUser?.name}</p>
+
+            {currentUser?.avatar ? (
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="header__avatar"
+              />
+            ) : (
+              <div className="header__avatar">
+                {currentUser?.name?.charAt(0)}
+              </div>
+            )}
+          </div>
+        </NavLink>
+      )}
+
+      {loggedIn && (
         <button type="button" onClick={handleLogout}>
           Log out
         </button>
       )}
-      <NavLink className="header__nav-link" to="/profile">
-        <div className="header__user-container">
-          <p className="header__username">{currentUser?.name}</p>
-          <img
-            src={currentUser?.avatar}
-            alt={currentUser?.name}
-            className="header__avatar"
-          />
-        </div>
-      </NavLink>
     </header>
   );
 }

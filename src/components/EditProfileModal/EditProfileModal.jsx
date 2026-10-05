@@ -6,8 +6,6 @@ function EditProfileModal({ isOpen, onClose, setCurrentUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("jwt");
-
     updateProfile(name, avatar)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
@@ -46,10 +44,6 @@ function EditProfileModal({ isOpen, onClose, setCurrentUser }) {
       />
 
       <button type="submit">Save</button>
-
-      <button type="button" onClick={onClose}>
-        Close
-      </button>
 
       <button type="button" onClick={onClose}>
         Close

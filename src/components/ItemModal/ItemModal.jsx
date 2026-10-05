@@ -1,21 +1,13 @@
-import "./ItemModal.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { addCardLike, removeCardLike } from "../../utils/Api";
+import "./ItemModal.css";
+
 import closex from "../../assets/closex.png";
 
-function ItemModal({ isOpen, onClose, onDelete, card, onCardUpdate }) {
+function ItemModal({ isOpen, onClose, onDelete, card }) {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = card.likes?.includes(currentUser?._id);
-  const handleLikeClick = () => {
-    const request = isLiked ? removeCardLike(card._id) : addCardLike(card._id);
 
-    request
-      .then((updatedCard) => {
-        onCardUpdate(updatedCard);
-      })
-      .catch(console.error);
-  };
+  const isOwn = card.owner === currentUser?._id;
   return (
     <div className={`item-modal ${isOpen ? "item-modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
@@ -28,18 +20,16 @@ function ItemModal({ isOpen, onClose, onDelete, card, onCardUpdate }) {
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <div className="modal__weather">Weather: {card.weather}</div>
-
-          <button type="button" onClick={handleLikeClick}>
-            {isLiked ? "Unlike" : "Like"}
-          </button>
         </div>
-        <button
-          onClick={() => onDelete(card._id)}
-          type="button"
-          className="modal__delete"
-        >
-          Delete item
-        </button>
+        {isOwn && (
+          <button
+            onClick={() => onDelete(card._id)}
+            type="button"
+            className="modal__delete"
+          >
+            Delete item
+          </button>
+        )}
       </div>
     </div>
   );

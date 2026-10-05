@@ -22,6 +22,8 @@ import {
   removeItem,
   register,
   getCurrentUser,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/Api";
 
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -66,6 +68,16 @@ function App() {
   const handleRegister = (name, avatar, email, password) => {
     register(name, avatar, email, password)
       .then(() => {
+        return login(email, password);
+      })
+      .then((data) => {
+        localStorage.setItem("jwt", data.token);
+        setLoggedIn(true);
+
+        return getCurrentUser();
+      })
+      .then((user) => {
+        setCurrentUser(user);
         closeActiveModal();
       })
       .catch(console.error);
@@ -74,6 +86,31 @@ function App() {
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+  const handleCardLike = (card) => {
+    const isLiked = card.likes.some((id) => id === currentUser._id);
+
+    if (isLiked) {
+      removeCardLike(card._id)
+        .then((updatedCard) => {
+          setClothingItems((items) =>
+            items.map((item) =>
+              item._id === updatedCard._id ? updatedCard : item,
+            ),
+          );
+        })
+        .catch(console.error);
+    } else {
+      addCardLike(card._id)
+        .then((updatedCard) => {
+          setClothingItems((items) =>
+            items.map((item) =>
+              item._id === updatedCard._id ? updatedCard : item,
+            ),
+          );
+        })
+        .catch(console.error);
+    }
   };
 
   const handleCardUpdate = (updatedCard) => {
@@ -182,6 +219,7 @@ function App() {
                     clothingItems={clothingItems}
                     setClothingItems={setClothingItems}
                     handleCardClick={handleCardClick}
+                    handleCardLike={handleCardLike}
                   />
                 }
               />
@@ -225,7 +263,6 @@ function App() {
                 card={selectedCard}
                 onClose={closeActiveModal}
                 onDelete={handleDeleteItem}
-                onCardUpdate={handleCardUpdate}
               />
             )}
 

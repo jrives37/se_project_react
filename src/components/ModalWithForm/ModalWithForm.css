@@ -33,12 +33,6 @@
   margin: 12px 0 12px 0;
 }
 
-.modal__close {
-  position: absolute;
-  top: 20px;
-  right: 28px;
-}
-
 .modal__content-add {
   background-color: #fff;
   position: relative;
@@ -89,6 +83,9 @@
 }
 
 .modal__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
   padding: 0;
   height: 20px;
   width: 20px;
