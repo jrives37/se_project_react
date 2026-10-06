@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { login, checkToken } from "../../auth";
 import "./App.css";
 
@@ -11,8 +11,10 @@ import Main from "../Main/Main";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Footer from "../Footer/Footer";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -133,6 +135,9 @@ function App() {
   const handleLoginClick = () => {
     setActiveModal("login");
   };
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -228,22 +233,19 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  loggedIn ? (
+                  <ProtectedRoute loggedIn={loggedIn}>
                     <Profile
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
-                      setCurrentUser={setCurrentUser}
                       handleCardLike={handleCardLike}
                       handleLogout={handleLogout}
+                      handleEditProfileClick={handleEditProfileClick}
                     />
-                  ) : (
-                    <Navigate to="/" replace />
-                  )
+                  </ProtectedRoute>
                 }
               />
             </Routes>
-
             <AddItemModal
               isOpen={activeModal === "add-garment"}
               onClose={closeActiveModal}
