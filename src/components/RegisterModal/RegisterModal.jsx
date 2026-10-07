@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useForm } from "../../../hooks/useForm";
+import { useForm } from "../../utils/hooks/useForm";
 
 function RegisterModal({ isOpen, onClose, handleRegister, handleLoginClick }) {
   const defaultValues = {
@@ -9,13 +10,18 @@ function RegisterModal({ isOpen, onClose, handleRegister, handleLoginClick }) {
     password: "",
   };
 
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     handleRegister(values.name, values.avatar, values.email, values.password);
   };
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm

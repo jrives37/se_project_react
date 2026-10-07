@@ -1,13 +1,12 @@
 .card {
-  width: 100%;
+  width: 323px;
   height: 326px;
-  border-radius: 1px;
+  border-radius: 19px;
   position: relative;
   border: 0;
   display: flex;
   justify-content: center;
 }
-
 .card__name {
   position: absolute;
   top: 15px;

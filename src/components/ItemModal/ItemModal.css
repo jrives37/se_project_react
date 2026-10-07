@@ -1,13 +1,15 @@
 .modal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #0000004d;
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
+  z-index: 100;
 }
 
 .modal_opened {
@@ -98,4 +100,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.item-modal_opened {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }

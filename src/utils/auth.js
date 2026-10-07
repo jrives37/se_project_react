@@ -1,3 +1,5 @@
+import { handleServerResponse } from "./Api";
+
 export function register(name, avatar, email, password) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
@@ -20,9 +22,7 @@ export function login(email, password) {
       email,
       password,
     }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 }
 export function checkToken(token) {
   return fetch("http://localhost:3001/users/me", {
@@ -31,7 +31,5 @@ export function checkToken(token) {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 }

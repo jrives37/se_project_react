@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { login, checkToken } from "../../auth";
+import { login, checkToken } from "../../utils/auth";
 import "./App.css";
 
 import { coordinates, apiKey } from "../../utils/constants";
@@ -70,17 +70,7 @@ function App() {
   const handleRegister = (name, avatar, email, password) => {
     register(name, avatar, email, password)
       .then(() => {
-        return login(email, password);
-      })
-      .then((data) => {
-        localStorage.setItem("jwt", data.token);
-        setLoggedIn(true);
-
-        return getCurrentUser();
-      })
-      .then((user) => {
-        setCurrentUser(user);
-        closeActiveModal();
+        handleLogin(email, password);
       })
       .catch(console.error);
   };
@@ -114,14 +104,6 @@ function App() {
         })
         .catch(console.error);
     }
-  };
-
-  const handleCardUpdate = (updatedCard) => {
-    setSelectedCard(updatedCard);
-
-    setClothingItems((items) =>
-      items.map((item) => (item._id === updatedCard._id ? updatedCard : item)),
-    );
   };
 
   const handleAddClick = () => {
@@ -263,7 +245,11 @@ function App() {
               handleLogin={handleLogin}
               handleRegisterClick={handleRegisterClick}
             />
-
+            <EditProfileModal
+              isOpen={activeModal === "edit-profile"}
+              onClose={closeActiveModal}
+              setCurrentUser={setCurrentUser}
+            />
             {activeModal === "preview" && (
               <ItemModal
                 isOpen={true}

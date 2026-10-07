@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { updateProfile } from "../../utils/Api";
-import { useForm } from "../../../hooks/useForm";
+import { useForm } from "../../utils/hooks/useForm";
 
 function EditProfileModal({ isOpen, onClose, setCurrentUser }) {
   const currentUser = useContext(CurrentUserContext);
@@ -12,16 +12,16 @@ function EditProfileModal({ isOpen, onClose, setCurrentUser }) {
     avatar: "",
   };
 
-  const { values, handleChange, resetForm } = useForm(defaultValues);
+  const { values, handleChange, setValues } = useForm(defaultValues);
 
   useEffect(() => {
     if (isOpen && currentUser) {
-      resetForm({
+      setValues({
         name: currentUser.name,
         avatar: currentUser.avatar,
       });
     }
-  }, [isOpen, currentUser]);
+  }, [isOpen, currentUser, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
